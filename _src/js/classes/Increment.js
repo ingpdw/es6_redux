@@ -14,7 +14,7 @@ class Increment {
     let $body = jQuery( 'body' );
     $body.append( this.template() );
     $body.on( 'click', `#${this.selector}`, () => {
-			//@subscribe
+			//@dispacth
       Store.dispatch( incrementAction() );
     });
   }

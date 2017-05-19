@@ -26,6 +26,7 @@ class SetCount {
     Store.subscribe( () => {
 			let count = Store.getState().buttonCount;
 			this.count = count;
+			console.log( 'SetCount:subscribe::' + count );
       jQuery( `#${this.selector}`).text( count );
     });
   }

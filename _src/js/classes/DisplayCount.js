@@ -18,6 +18,7 @@ class DisplayCount {
 		//@subscribe
     Store.subscribe( () => {
 			let count = Store.getState().myCount.count;
+			console.log( 'DisplayCount:subscribe::' + count );
       jQuery( `#${this.selector}`).text( Store.getState().myCount.count );
     });
   }

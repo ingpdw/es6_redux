@@ -166,7 +166,7 @@
 	      var $body = jQuery('body');
 	      $body.append(this.template());
 	      $body.on('click', '#' + this.selector, function () {
-	        //@subscribe
+	        //@dispacth
 	        _Store2.default.dispatch((0, _actions.incrementAction)());
 	      });
 	    }
@@ -190,6 +190,12 @@
 
 	'use strict';
 	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.mapStateToProps = mapStateToProps;
+	exports.mapDispatchToProps = mapDispatchToProps;
+	
 	var _redux = __webpack_require__(4);
 	
 	var _reducers = __webpack_require__(26);
@@ -201,7 +207,17 @@
 	/**
 	 * Store
 	 */
-	module.exports = (0, _redux.createStore)(_reducers2.default);
+	var Store = (0, _redux.createStore)(_reducers2.default);
+	
+	function mapStateToProps(state) {
+	  Store.dispatch(actions);
+	}
+	
+	function mapDispatchToProps(dispatch) {
+	  return null;
+	}
+	
+	exports.default = Store;
 
 /***/ }),
 /* 4 */
@@ -1660,6 +1676,7 @@
 	      _Store2.default.subscribe(function () {
 	        var count = _Store2.default.getState().buttonCount;
 	        _this2.count = count;
+	        console.log('SetCount:subscribe::' + count);
 	        jQuery('#' + _this2.selector).text(count);
 	      });
 	    }
@@ -1773,6 +1790,7 @@
 	      //@subscribe
 	      _Store2.default.subscribe(function () {
 	        var count = _Store2.default.getState().myCount.count;
+	        console.log('DisplayCount:subscribe::' + count);
 	        jQuery('#' + _this.selector).text(_Store2.default.getState().myCount.count);
 	      });
 	    }
